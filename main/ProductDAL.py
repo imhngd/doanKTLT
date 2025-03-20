@@ -31,6 +31,11 @@ class ProductDAL:
                 temp_product = product
                 break
         return temp_product
+    def update_quantity_product(self, id, quantity):
+        collection = self.connector.connect("products_data")
+        product = self.get_product_by_id(id)
+        new_quantity = product.quantity - quantity
+        collection.update_one({"ProductID": id}, {"$set": {"Quantity": new_quantity}})
     def get_product_by_name(self, name):
         self.list_product = self.get_list_product()
         temp_product = None

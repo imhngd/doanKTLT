@@ -62,6 +62,7 @@ class OrderProductExt(Ui_MainWindow):
             msg.setWindowTitle("Thông báo")
             msg.exec()
         else:
+            self.product_dal.update_quantity_product(needed_product.id, quantity)
             self.list_product.append([needed_product, quantity])
             self.tableWidgetListProduct.setRowCount(self.count_row)
             self.tableWidgetListProduct.insertRow(self.count_row)
